@@ -5,7 +5,7 @@ import styled from "styled-components";
 import Switch from "@/components/Switch";
 import { useTheme } from "@/utils/provider";
 import { comp_themes, themes } from "@/utils/variables";
-import MegaFunction from "@/utils/gradient";
+import AnimatedGradient from "@/utils/gradient";
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,7 +39,6 @@ const Home = () => {
       setData(result.data.results)
     }
     GetPokemon();
-    // MegaFunction();
 }, [])
 
 if(data === fakeData){
@@ -59,10 +58,6 @@ return <>
         onClick={()=>{setTheme(theme === 'dark' ? 'default' : 'dark')}}
         />
       <Card/>
-
-      {/* <canvas id="gradient-canvas">
-
-      </canvas> */}
     </Wrapper>
   {/* {data && data.map((pokemon) => (
     <div key={pokemon.name} style={{textTransform:"capitalize"}}>
