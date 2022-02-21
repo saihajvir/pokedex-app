@@ -1,6 +1,5 @@
 export const colors = {
-    
-    darkgrey:"2E2E2E"
+    darkgrey: "#2E2E2E"
 }
 
 //For setting up simple global colors. 

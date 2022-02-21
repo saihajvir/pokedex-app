@@ -2,7 +2,7 @@ import { useContext, createContext, useState } from "react";
 import { themes } from "@/utils/variables"
 
 const initialStates = {
-    theme: "default",
+    theme: "dark",
     setTheme:()=>{}
 }
 

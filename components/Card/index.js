@@ -1,17 +1,24 @@
 import styled from "styled-components";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
-const CardCont = styled.div`
+const CardCont = styled(motion.div)`
     display: flex;
-    width: 100px;
-    height: 100px;
-    background-color: green;
+    width: 400px;
+    height: 500px;
+    background-color: white;
+    border-radius: 30px;
+    margin: 10px;
 `
 
 const Card = () => {
 
     return <>
-        <CardCont>
+        <CardCont
+            whileHover={{
+                scale: 1.1
+            }}
+        >
 
         </CardCont>
     </>
