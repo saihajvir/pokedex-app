@@ -9,9 +9,10 @@ import AnimatedGradient from "@/utils/gradient";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  flex-wrap: wrap;
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
   justify-content: center;
   align-items: center;
 `
@@ -22,26 +23,38 @@ const fakeData = [
   }
 ]
 
-
+const arr = []
 
 const Home = () => {
-
+  
   const {theme, setTheme} = useTheme();
   
-  const [data, setData] = useState(fakeData);
+  const [data, setData] = useState([]);
   const [isDarkToggled, setIsDarkToggled] = useState(false);
+  
+  const PokemonLimit = 151
+
+  const CatchPokemon = async() => {
+    let PokemonArr = []
+    for(let i = 1; i <= PokemonLimit; i++){
+      PokemonArr.push(await GetPokemon(i))
+    }
+    setData(PokemonArr)
+    console.log(PokemonArr)
+  }
+  
+  const GetPokemon = async(id) => {
+    // const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=151")
+    const result = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
+    return result.data;
+  }
 
   
   useEffect (() => {
-    const GetPokemon = async() => {
-      const result = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=151")
-      console.log(result.data.results)
-      setData(result.data.results)
-    }
-    GetPokemon();
+    CatchPokemon();
 }, [])
 
-if(data === fakeData){
+if(data === []){
   return <>
     <h1>
       Sorry, No Pokemon Yet! :(
@@ -57,14 +70,14 @@ return <>
         onChange={e => setIsDarkToggled(e.target.checked)}
         onClick={()=>{setTheme(theme === 'dark' ? 'default' : 'dark')}}
         />
-      <Card/>
+        {data && data.map((pokemon) => (
+          <Card
+            key={pokemon.id}
+            name={pokemon.name}
+          />
+          )
+        )}
     </Wrapper>
-  {/* {data && data.map((pokemon) => (
-    <div key={pokemon.name} style={{textTransform:"capitalize"}}>
-      {pokemon.name}
-    </div>
-    )
-  )} */}
 </>
 }
 
