@@ -28,10 +28,12 @@ const InfoCont = styled.div`
 const PokemonName = styled.h1`
     font-size: 2em;
     font-weight: 700;
+    color: white;
 `
 
 const Card = ({
-    name="default"
+    name="default",
+    pokeImg
 }) => {
 
     return <>
@@ -42,7 +44,7 @@ const Card = ({
             }}
         >
             <PokemonCont>
-                <img src="bulbasaur.webp" width={200} />
+                <img src={pokeImg} width={200} />
             </PokemonCont>
             <InfoCont>
                 <PokemonName>

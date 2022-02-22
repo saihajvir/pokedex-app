@@ -63,17 +63,18 @@ if(data === []){
 }
 
 return <>
-    <Wrapper>
       <Switch
         id="dark-mode-switch"
         toggled={theme === 'dark' ? true : false}
         onChange={e => setIsDarkToggled(e.target.checked)}
         onClick={()=>{setTheme(theme === 'dark' ? 'default' : 'dark')}}
-        />
+      />
+    <Wrapper>
         {data && data.map((pokemon) => (
           <Card
             key={pokemon.id}
             name={pokemon.name}
+            pokeImg={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
           />
           )
         )}
