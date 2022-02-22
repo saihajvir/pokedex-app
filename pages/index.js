@@ -70,14 +70,19 @@ return <>
         onClick={()=>{setTheme(theme === 'dark' ? 'default' : 'dark')}}
       />
     <Wrapper>
-        {data && data.map((pokemon) => (
+
+      <Card
+        name="Bulbasaur"
+        pokeImg="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
+      />
+        {/* {data && data.map((pokemon) => (
           <Card
             key={pokemon.id}
             name={pokemon.name}
             pokeImg={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`}
           />
           )
-        )}
+        )} */}
     </Wrapper>
 </>
 }
